@@ -208,4 +208,5 @@ Svi modeli koriste zajednički `random_seed` iz `config.yaml`, istu hronološku 
 
 ---
 
-**EUR/USD predviđanje · Master rad · ETF UCG**
+**EUR/USD predviđanje · Master rad · ETF UCG**#   e u r o - u s d - m l - p r e d i c t i o n  
+ 
