@@ -1,0 +1,6 @@
+model,train_accuracy,val_accuracy,test_accuracy,train_test_gap
+xgboost,1.0,0.5526,0.439,0.561
+svm,0.8865,0.5263,0.439,0.4475
+lightgbm,0.8108,0.5789,0.439,0.3718
+logreg,0.6162,0.5,0.5366,0.0796
+lstm,0.5284,0.5789,0.4878,0.0406

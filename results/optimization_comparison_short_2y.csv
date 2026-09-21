@@ -1,0 +1,6 @@
+model,accuracy_before_optimization,accuracy_after_optimization,improved
+logreg,0.5366,0.5366,False
+svm,0.5122,0.439,False
+xgboost,0.439,0.439,False
+lightgbm,0.3902,0.439,True
+lstm,0.5366,0.4878,False

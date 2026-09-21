@@ -1,0 +1,76 @@
+random_seed: 42 
+#Jedan broj koji se koristi 
+#svuda u projektu (numpy, sklearn, tensorflow) 
+#da bi svako pokretanje dalo iste rezultate.
+# Bez ovoga, svaki put kad pokreneš kod,
+ #dobio/la bi malo drugačije brojeve (jer modeli koriste nasumičnost 
+
+
+data:
+  start_date: "2003-01-01"
+  end_date: "2026-01-01"
+  experiment_tag: "full_23y"
+  short_start_date: "2024-01-01"
+  short_end_date: "2026-01-01"
+
+fred:
+  series_lag_days:
+    CPIAUCSL: 45
+    UNRATE: 35
+    DFF: 0
+    ECBDFR: 0
+  vintage_series: ["CPIAUCSL", "UNRATE"]
+
+split:
+  train_fraction: 0.70
+  val_fraction: 0.15
+  n_cv_folds: 5 #br presjeka
+  gap: 1 #koliko se redova preskace izmedju train i val seta, da bi se izbjegla curenja informacija 
+
+lstm:
+  n_stochastic_runs: 5 #5puta se trenira
+  max_search_combinations: 15 # br razlicitih kombinacija hiperparametara koje ce se testirati u pretrazi
+  epochs_search: 30 #koliko epoha ce se trenirati u pretrazi hiperparametara
+  epochs_final: 60 #finalni model ce se trenirati 60 epoha  
+  default_hyperparameters: #fiksna konfiguracija koja ce se koristiti ako se ne zeli raditi pretraga hiperparametara
+    sequence_length: 10
+    n_units: 32
+    n_layers: 1
+    dropout: 0.2 #propust za učenje
+    learning_rate: 0.001 #stopa učenja
+    batch_size: 32 #veličina batch-a
+    threshold: 0.5 #prag za klasifikaciju
+  param_grid:
+    sequence_length: [5, 10, 20] #dužina sekvence
+    n_units: [16, 32, 64] #broj jedinica u LSTM sloju
+    n_layers: [1, 2]
+    dropout: [0.1, 0.2, 0.3] #propust za učenje
+    learning_rate: [0.01, 0.001] #stopa učenja
+    batch_size: [16, 32] #veličina batch-a
+
+classical_models:
+  names: ["logreg", "svm", "xgboost", "lightgbm"]
+  n_jobs: 1 #broj paralelnih zadataka
+  early_stopping:
+    max_n_estimators: 1000 #maksimalan broj estimatorsa za XGBoost i LightGBM
+    early_stopping_rounds: 20 #broj rundi bez poboljšanja
+  param_grids: 
+    logreg:
+      clf__C: [0.001, 0.01, 0.1, 1, 10, 100] #regularizacijski parametar
+    svm:
+      clf__C: [0.1, 1, 10] #regularizacijski parametar
+      clf__gamma: ["scale", "auto"] #parametar jezgre
+      clf__kernel: ["rbf"] #kernel tip
+    xgboost:
+      clf__max_depth: [3, 5, 7] #maksimalna dubina stabla
+      clf__learning_rate: [0.01, 0.1] #stopa učenja
+    lightgbm:
+      clf__max_depth: [3, 5, 7]
+      clf__learning_rate: [0.01, 0.1]
+    
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  results: "results"
+  figures: "results/figures"
