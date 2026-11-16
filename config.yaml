@@ -15,10 +15,10 @@ data:
 
 fred:
   series_lag_days:
-    CPIAUCSL: 45
-    UNRATE: 35
-    DFF: 0
-    ECBDFR: 0
+    CPIAUCSL: 0
+    UNRATE: 0
+    DFF: 1
+    ECBDFR: 1
   vintage_series: ["CPIAUCSL", "UNRATE"]
 
 split:
@@ -28,6 +28,7 @@ split:
   gap: 1 #koliko se redova preskace izmedju train i val seta, da bi se izbjegla curenja informacija 
 
 lstm:
+  representative_run_index: 0
   n_stochastic_runs: 5 #5puta se trenira
   max_search_combinations: 15 # br razlicitih kombinacija hiperparametara koje ce se testirati u pretrazi
   epochs_search: 30 #koliko epoha ce se trenirati u pretrazi hiperparametara
@@ -74,3 +75,6 @@ paths:
   data_processed: "data/processed"
   results: "results"
   figures: "results/figures"
+
+statistics:
+  block_length: 10
