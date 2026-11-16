@@ -1,6 +1,6 @@
-model,train_accuracy,val_accuracy,test_accuracy,train_test_gap
-xgboost,1.0,0.5526,0.439,0.561
-svm,0.8865,0.5263,0.439,0.4475
-lightgbm,0.8108,0.5789,0.439,0.3718
-logreg,0.6162,0.5,0.5366,0.0796
-lstm,0.5284,0.5789,0.4878,0.0406
+model,trainval_accuracy,test_accuracy,trainval_test_gap,selection_train_accuracy,selection_val_accuracy
+xgboost,1.0,0.4146,0.5854,1.0,0.6053
+svm,0.7117,0.4878,0.2239,0.7228,0.5263
+lightgbm,0.6757,0.4634,0.2123,0.7011,0.5526
+logreg,0.6126,0.5366,0.076,0.6196,0.5789
+lstm,0.5352,0.561,-0.0258,0.5371,0.6316
