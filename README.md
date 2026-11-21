@@ -59,6 +59,7 @@ Analiza/
 │   ├── split.py                   # Hronološka podjela i CV foldovi
 │   ├── evaluation.py              # Baseline modeli, metrike i testovi
 │   ├── pipelines.py               # Orkestracija kompletnog eksperimenta
+│   ├── figures.py                 # Slike za rad (Slike 4–9) iz summary_*.json
 │   └── models/
 │       ├── sklearn_models.py       # LogReg, SVM, XGBoost i LightGBM
 │       └── lstm_model.py           # LSTM arhitektura i optimizacija
@@ -93,10 +94,16 @@ jupyter notebook notebooks/main_experiment.ipynb
 1. import biblioteka i ispis verzija;
 2. učitavanje `config.yaml`;
 3. unos FRED API ključa pomoću `getpass`;
-4. pokretanje punog eksperimenta sa `use_short_period=False`;
-5. pregled rezultata i statističkih testova;
-6. pokretanje dvogodišnjeg eksperimenta sa `use_short_period=True`;
-7. generisanje figura iz `results/summary_*.json` fajlova.
+4. pokretanje punog eksperimenta sa `use_short_period=False` i pregled rezultata i statističkih testova;
+5. pokretanje dvogodišnjeg eksperimenta sa `use_short_period=True` i pregled rezultata;
+6. koeficijenti logističke regresije (poslije oba eksperimenta);
+7. generisanje slika za rad (`src/figures.py`) iz `results/summary_*.json` fajlova, u `results/figures_rad/`.
+
+Slike se mogu napraviti i bez notebook-a, iz sačuvanih rezultata:
+
+```powershell
+python -m src.figures
+```
 
 ### Komandna linija
 
@@ -172,7 +179,7 @@ Za svaki eksperiment generišu se fajlovi sa oznakom `<tag>`:
 | `stationarity_<tag>.csv` | Rezultati ADF testa |
 | `subperiod_accuracy_<tag>.csv` | Tačnost kroz tri vremenska podperioda |
 | `summary_<tag>.json` | Kompletan sažetak korišćen za tabele i figure |
-| `figures/` | Generisane figure za analizu i master rad |
+| `figures_rad/` | Slike 4–9 za master rad (`src/figures.py`) |
 
 `summary_<tag>.json` sadrži:
 
@@ -208,5 +215,4 @@ Svi modeli koriste zajednički `random_seed` iz `config.yaml`, istu hronološku 
 
 ---
 
-**EUR/USD predviđanje · Master rad · ETF UCG**#   e u r o - u s d - m l - p r e d i c t i o n  
- 
+**EUR/USD predviđanje · Master rad · ETF UCG**

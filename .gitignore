@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtualna okruzenja
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Operativni sistem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Tajne (FRED API kljuc se unosi samo preko getpass i nikad se ne cuva u fajlovima)
+.env
+*.key
